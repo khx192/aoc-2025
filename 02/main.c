@@ -30,7 +30,7 @@ int invalid_id(long long id)
 		} while (curr % div == prev);
 
 		if (curr == 0)
-			return i;
+			return 1;
 	}
 
 	return 0;
@@ -52,11 +52,9 @@ long long sum_inv(const char *id_range, long long *halves)
 	long long start, end;
 	sscanf(id_range, "%lld-%lld", &start, &end);
 	
-	int seq_len;
 	long long inv = 0;
 	for (long long i = start; i <= end; i += 1) {
-		seq_len = invalid_id(i);
-		if (seq_len) {
+		if (invalid_id(i)) {
 			inv += i;
 			if (halves_eq(i))
 				*halves += i;
