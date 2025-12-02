@@ -40,7 +40,7 @@ void solve_file(const char *file_path)
 
 	while (fscanf(fp, "%s", buff) != EOF) {
 		total_clicks += rotate(buff, &curr);
-		if (curr % MAX_ROTATIONS == 0)
+		if (curr == 0)
 			clicks += 1;
 	}
 	fclose(fp);
