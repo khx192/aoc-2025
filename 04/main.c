@@ -66,7 +66,7 @@ void solve_file(const char *file_path)
 {
 	FILE *fp = fopen(file_path, "r");
 	if (!fp) {
-		fprintf(stderr, "[ERROR] File `%s` doesn't exists.", file_path);
+		fprintf(stderr, "[ERROR] File `%s` doesn't exists.\n", file_path);
 		exit(1);
 	}
 
