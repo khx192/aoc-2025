@@ -121,8 +121,6 @@ void solve_file(const char *file_path)
 		}
 	}
 
-	printf("line_size: %d\n", line_size);
-	printf("cols: %d\nrows: %d\n", cols, rows);
 	fseek(fp, 0, SEEK_END);
 	int size = ftell(fp);
 
@@ -130,7 +128,10 @@ void solve_file(const char *file_path)
 
 	fseek(fp, 0, SEEK_SET);
 	fread(buff, 1, size, fp);
+
 	buff[size] = '\0';
+
+	fclose(fp);
 
 	long long result1 = 0;
 	long long result2 = 0;
@@ -143,7 +144,6 @@ void solve_file(const char *file_path)
 		result2 += eval_by_cols(buff, rows, line_size, start, end, op);
 	}
 
-	fclose(fp);
 	free(buff);
 
 	printf("[PART 1] Solution: %lld\n", result1);
